@@ -111,6 +111,20 @@ services:
       - jellyfin:/config
       - /mnt:/mnt:rshared
 
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    hostname: jellyseerr
+    restart: unless-stopped
+    environment:
+      - PUID=1001
+      - PGID=1001
+    networks:
+      - network
+    ports:
+      - 5054:5055
+    volumes:
+      - jellyseerr:/app/config
   plex:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
@@ -187,6 +201,7 @@ volumes:
   overseerr:
   prowlarr:
   jellyfin:
+  jellyseerr:
   plex:
   zurg:
   rclone:
