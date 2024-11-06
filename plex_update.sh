@@ -1,6 +1,6 @@
 #!/bin/bash
 
-plex_url="http://ip_address:32400"
+plex_url="http://plex:32400"
 token="plex_token"
 zurg_mount="/mnt/realdebrid"
 section_ids=$(curl -sLX GET "$plex_url/library/sections" -H "X-Plex-Token: $token" | xmllint --xpath "//Directory/@key" - | grep -o 'key="[^"]*"' | awk -F'"' '{print $2}')
