@@ -93,6 +93,24 @@ services:
     volumes:
       - prowlarr:/config
 
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    hostname: jellyfin
+    restart: unless-stopped
+    environment:
+      - PUID=1001
+      - PGID=1001
+    networks:
+      - network
+    ports:
+      - 8096:8096
+      - 8920:8920
+      - 7359:7359/udp
+    volumes:
+      - jellyfin:/config
+      - /mnt:/mnt:rshared
+
   plex:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
@@ -168,6 +186,7 @@ volumes:
   rdtclient:
   overseerr:
   prowlarr:
+  jellyfin:
   plex:
   zurg:
   rclone:
