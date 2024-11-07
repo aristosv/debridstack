@@ -131,6 +131,8 @@ services:
       - 9999:9999
     volumes:
       - zurg:/app/data
+      - /var/lib/docker/volumes/root_zurg/_data/app/config.yml:/app/config.yml
+      - /var/lib/docker/volumes/root_zurg/_data/app/plex_update.sh:/app/plex_update.sh
 
   rclone:
     image: rclone/rclone:latest
