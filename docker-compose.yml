@@ -153,6 +153,7 @@ services:
     volumes:
       - rclone:/config/rclone
       - /mnt:/mnt:rshared
+      - /var/lib/docker/volumes/root_rclone/_data/rclone.conf:/config/rclone/rclone.conf
     links:
       - zurg
     command: "mount zurg: /mnt/realdebrid --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
